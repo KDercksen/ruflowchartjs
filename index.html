@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css'>
+
+	<script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
+	<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+	<script src='jquery.flowchart/jquery.flowchart.min.js'></script>
+	<link rel='stylesheet' href='jquery.flowchart/jquery.flowchart.min.css'>
+	<script src='ruflowchart.js'></script>
+</head>
+<body>
+<div class='container'>
+	<h2 class='text-center'>Mockup flowchart tool</h2>
+	<div class='container text-center'>
+		<a class='text-muted credit' href='https://github.com/KDercksen/ruflowchartjs'>Source on Github</a>
+	</div>
+	<hr />
+	<div class='text-center'>
+		<div class='btn-group'>
+			<button id='buttonStart' type='button' class='btn btn-primary'>Start</button>
+			<button id='buttonStop' type='button' class='btn btn-primary'>Stop</button>
+			<button id='buttonStatement' type='button' class='btn btn-primary'>Statement</button>
+			<button id='buttonIf' type='button' class='btn btn-primary'>If-cond</button>
+			<button id='buttonWhile' type='button' class='btn btn-primary'>While-cond</button>
+			<button id='buttonForEach' type='button' class='btn btn-primary'>For-each-cond</button>
+			<button type='button' class='btn btn-info' data-toggle='collapse' data-target='#usage'>Usage</button>
+		</div>
+	</div>
+	<div id='usage' class='text-center collapse'>
+		<br /><p>Some fuckin' usage help text.</p>
+	</div>
+	<hr />
+	<!-- this is where the flowchart canvas goes -->
+	<div id='flowchart'></div>
+</body>
+</html>

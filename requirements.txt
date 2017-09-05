@@ -1,0 +1,13 @@
+Entities:
+- start/stop (default on screen, oval shape with gray colour)
+- statements (square shape, pink colour)
+- if-condition (hexagon shape, pink colour, true/false arrows)
+- while-condition (pentagon shape, yellow colour, false/true arrows and loopback for true arrow)
+- for-each-condition (pentagon shape, yellow colour, false/true arrows and loopback for true arrow)
+
+flowchart.js
+
+buttons/popup menus to add new items to flowchart
+ability to edit certain things (through dropdown?)
+
+export to svg
