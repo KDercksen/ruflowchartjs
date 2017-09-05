@@ -2,8 +2,8 @@ $(document).ready(function() {
     var data = {
       operators: {
         operator: {
-          top: 500,
-          left: 200,
+          top: 100,
+          left: 100,
           properties: {
             title: 'Operator',
             inputs: {
