@@ -1,5 +1,7 @@
-// TODO: refactor, add functionality like renaming, multiple connectors,
-// exporting to svg etc
+// TODO:
+// make operator editing more pretty
+// find out why multiple connector breaks when editing operator output label
+// export to svg
 $(document).ready(function() {
     var data = {
         operators: {
@@ -34,9 +36,31 @@ $(document).ready(function() {
     };
 
     // Apply the plugin on a standard, empty div...
+    var $operatorEditTextArea = $('#operatorEditTextArea')
+    var $operatorProperties = $('#operatorData');
     var $flowchart = $('#flowchart');
     $flowchart.flowchart({
-      data: data
+        data: data,
+        onOperatorSelect: function(opId) {
+            console.log('on operator select');
+            $operatorEditTextArea.show();
+            var display = JSON.stringify($flowchart.flowchart('getOperatorData', opId), null, 4);
+            $operatorProperties.val(display);
+            return true;
+        },
+        onOperatorUnselect: function() {
+            console.log('on operator unselect');
+            $operatorEditTextArea.hide();
+            return true;
+        }
+    });
+
+    $operatorProperties.keyup(function () {
+        var opId = $flowchart.flowchart('getSelectedOperatorId');
+        if (opId != null) {
+            var opdata = JSON.parse($operatorProperties.val());
+            $flowchart.flowchart('setOperatorData', opId, opdata);
+        }
     });
 
     function addOpTrueFalseOutputs(title) {
@@ -117,4 +141,3 @@ $(document).ready(function() {
     });
 
 });
-
