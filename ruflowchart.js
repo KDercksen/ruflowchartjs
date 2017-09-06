@@ -39,114 +39,76 @@ $(document).ready(function() {
       data: data
     });
 
-    var operator_n = 0
-    $('.buttonStatement').click(function() {
-        console.log('create statement');
-        operatorId = 'created_operator_' + operator_n;
-        data = {
+    function addOpTrueFalseOutputs(title) {
+        console.log('create true/false outputs');
+        var outputs = {
+            output_1: {
+                label: 'True'
+            },
+            output_2: {
+                label: 'False'
+            }
+        };
+        return addOp(title, outputs);
+    };
+
+    function addOp(title, outputs) {
+        console.log('adding operator');
+        var opdata = {
             top: 0,
             left: $('#body').width() / 2,
             properties: {
-                title: 'Statement',
+                title: title,
                 inputs: {
                     ins: {
                         label: 'Input (:i)',
                         multiple: true
                     }
                 },
-                outputs: {
-                    output_1: {
-                        label: 'Output'
-                    }
-                }
+                outputs: outputs
             }
         };
-        operator_n++;
-        $flowchart.flowchart('createOperator', operatorId, data);
+        return $flowchart.flowchart('addOperator', opdata);
+    };
+
+    function addLoopLink(opId) {
+        console.log('adding loop link from output_1 to ins');
+        var linkdata = {
+            fromOperator: opId,
+            fromConnector: 'output_1',
+            fromSubconnector: 0,
+            toOperator: opId,
+            toConnector: 'ins',
+            toSubconnector: 0
+        };
+        return $flowchart.flowchart('addLink', linkdata);
+    };
+
+    $('.buttonStatement').click(function() {
+        console.log('create statement');
+        var outputs = {
+            output_1: {
+                label: 'Output'
+            }
+        };
+        addOp('Statement', outputs);
     });
 
     $('.buttonIf').click(function() {
         console.log('create if');
-        operatorId = 'created_operator_' + operator_n;
-        data = {
-            top: 0,
-            left: $('#body').width() / 2,
-            properties: {
-                title: 'If condition',
-                inputs: {
-                    ins: {
-                        label: 'Input (:i)',
-                        multiple: true
-                    }
-                },
-                outputs: {
-                    output_1: {
-                        label: 'True'
-                    },
-                    output_2: {
-                        label: 'False'
-                    }
-                }
-            }
-        };
-        operator_n++;
-        $flowchart.flowchart('createOperator', operatorId, data);
+        addOpTrueFalseOutputs('If');
     });
 
     $('.buttonWhile').click(function() {
         console.log('create while');
-        operatorId = 'created_operator_' + operator_n;
-        data = {
-            top: 0,
-            left: $('#body').width() / 2,
-            properties: {
-                title: 'While condition',
-                inputs: {
-                    ins: {
-                        label: 'Input (:i)',
-                        multiple: true
-                    }
-                },
-                outputs: {
-                    output_1: {
-                        label: 'True'
-                    },
-                    output_2: {
-                        label: 'False'
-                    }
-                }
-            }
-        };
-        operator_n++;
-        $flowchart.flowchart('createOperator', operatorId, data);
+        var opId = addOpTrueFalseOutputs('While');
+        addLoopLink(opId);
     });
 
     $('.buttonForEach').click(function() {
         console.log('create for each');
-        operatorId = 'created_operator_' + operator_n;
-        data = {
-            top: 0,
-            left: $('#body').width() / 2,
-            properties: {
-                title: 'For each',
-                inputs: {
-                    ins: {
-                        label: 'Input (:i)',
-                        multiple: true
-                    }
-                },
-                outputs: {
-                    output_1: {
-                        label: 'True'
-                    },
-                    output_2: {
-                        label: 'False'
-                    }
-                }
-            }
-        };
-        operator_n++;
-        $flowchart.flowchart('createOperator', operatorId, data);
+        var opId = addOpTrueFalseOutputs('For each');
+        addLoopLink(opId);
     });
 
     $('.buttonDelete').click(function() {
