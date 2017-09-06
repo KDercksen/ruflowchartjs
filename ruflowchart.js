@@ -49,8 +49,9 @@ $(document).ready(function() {
             properties: {
                 title: 'Statement',
                 inputs: {
-                    input_1: {
-                        label: 'Input'
+                    ins: {
+                        label: 'Input (:i)',
+                        multiple: true
                     }
                 },
                 outputs: {
@@ -73,8 +74,9 @@ $(document).ready(function() {
             properties: {
                 title: 'If condition',
                 inputs: {
-                    input_1: {
-                        label: 'Input'
+                    ins: {
+                        label: 'Input (:i)',
+                        multiple: true
                     }
                 },
                 outputs: {
@@ -100,11 +102,9 @@ $(document).ready(function() {
             properties: {
                 title: 'While condition',
                 inputs: {
-                    input_1: {
-                        label: 'Input'
-                    },
-                    input_2: {
-                        label: 'Loop'
+                    ins: {
+                        label: 'Input (:i)',
+                        multiple: true
                     }
                 },
                 outputs: {
@@ -130,11 +130,9 @@ $(document).ready(function() {
             properties: {
                 title: 'For each',
                 inputs: {
-                    input_1: {
-                        label: 'Input'
-                    },
-                    input_2: {
-                        label: 'Loop'
+                    ins: {
+                        label: 'Input (:i)',
+                        multiple: true
                     }
                 },
                 outputs: {
